@@ -1,8 +1,34 @@
 'use strict';
 
 // Task 1
-let planets = ['Меркурий', 'Венера', 'Земля', 'Марс', 'Юпитер', 'Сатурн', 'Уран', 'Нептун', 'Плутон', 'Альдераан', 'Ванкор', 'Корусант', 'Набу', 'Осеон', 'Татуин', 'Эндор', 'Церера', 'Хаумеа', 'Макемаке', 'Эрида', 'Айего', 'Бонадан', 'Дантуин', 'Зиост', 'Риоон'];
-console.log('Задание 1:\n' + JSON.stringify(planets) + '\n\n');
+let planets = [
+  'Меркурий',
+  'Венера',
+  'Земля',
+  'Марс',
+  'Юпитер',
+  'Сатурн',
+  'Уран',
+  'Нептун',
+  'Плутон',
+  'Альдераан',
+  'Ванкор',
+  'Корусант',
+  'Набу',
+  'Осеон',
+  'Татуин',
+  'Эндор',
+  'Церера',
+  'Хаумеа',
+  'Макемаке',
+  'Эрида',
+  'Айего',
+  'Бонадан',
+  'Дантуин',
+  'Зиост',
+  'Риоон'
+];
+console.log('Планеты:\n' + JSON.stringify(planets) + '\n\n');
 
 // Task 2
 planets = planets.filter( (s) => {
@@ -10,7 +36,7 @@ planets = planets.filter( (s) => {
 		return true;
 	else
 		return false; });
-console.log('Задание 2:\n' + JSON.stringify(planets) + '\n\n');
+console.log('Фильтрация по заглавной первой букве:\n' + JSON.stringify(planets) + '\n\n');
 
 // Task 3
 planets.sort( (a, b) => {
@@ -19,7 +45,7 @@ planets.sort( (a, b) => {
 	else
 		return -1;
 	} );
-console.log('Задание 3:\n' + JSON.stringify(planets) + '\n\n');
+console.log('Сортровка по кол-ву гласных букв:\n' + JSON.stringify(planets) + '\n\n');
 
 function count(a) {
 	let ok = 'уеаоэяиыю';
@@ -40,7 +66,7 @@ for(let i = 0; i < planets.length; i++) {
 	}
 	codes.push(word);
 }
-console.log('Задание 4:\n');
+console.log('Массив кодов символов для каждого элемента:\n');
 for(let i = 0; i < planets.length; i++) {
 	console.log(planets[i] + ": " + JSON.stringify(codes[i]) + "\n");
 }
@@ -49,9 +75,30 @@ let words = [];
 for(let i = 0; i < planets.length; i++) {
 	words.push(planets[i].split(' '));
 }
-console.log('\n');
+console.log('Массив слов в каждом элементе:\n');
 for(let i = 0; i < planets.length; i++) {
 	console.log(JSON.stringify(words[i]) + "\n");
 }
 
 // Task 5
+global = {};
+global.api={}
+
+global.api.searchBySubstr = function(subs) {
+  let ans = [];
+  for(let i = 0; i < planets.length; i++) {
+    if(planets[i].indexOf(subs) != -1)
+        ans.push(planets[i]);
+  }
+  return ans;
+}
+
+global.api.searchInText = function(text) {
+  let ans = [];
+  for(let i = 0; i < planets.length; i++) {
+    if(text.indexOf(planets[i]) != -1) {
+      ans.push(planets[i]);
+    }
+  }
+  return ans;
+}
